@@ -25,4 +25,4 @@ jobs:
 
         run: |
           echo "PR_NUMBER: $PR_NUMBER"
-          uv run cibot on-pr-changed --pr=$PR_NUMBER 
+          uv run cibot on-pr-changed $PR_NUMBER 
