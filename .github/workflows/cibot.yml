@@ -1,0 +1,27 @@
+name: Cibot
+on: [pull_request]
+
+jobs:
+  uv-example:
+    name: python
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.6.6"
+          python-version: "3.12"
+      
+      - name: Run cibot
+        env:
+          CIBOT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CIBOT_BACKEND: github
+          CIBOT_STORAGE: github_issue
+          CIBOT_PLUGINS: deferred_release
+          PR_NUMBER: ${{ github.event.number }} 
+
+        run: |
+          uv run cibot on-pr-changed --pr=$PR_NUMBER 
