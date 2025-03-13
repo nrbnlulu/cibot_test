@@ -20,7 +20,8 @@ jobs:
           CIBOT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CIBOT_BACKEND: github
           CIBOT_STORAGE: github_issue
-          CIBOT_PLUGINS: deferred_release
+          CIBOT_STORAGE_GH_ISSUE_NUMBER: ${{ github.event.number }}
+          CIBOT_PLUGINS: deferred_release, 
           PR_NUMBER: ${{ github.event.number }} 
 
         run: |
