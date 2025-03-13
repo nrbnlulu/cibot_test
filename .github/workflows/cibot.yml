@@ -17,7 +17,7 @@ jobs:
       
       - name: Run cibot
         env:
-          CIBOT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CIBOT_GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
           CIBOT_GITHUB_REPO_SLUG: ${{ github.repository }}
           CIBOT_BACKEND: github
           CIBOT_STORAGE: github_issue
