@@ -24,5 +24,4 @@ jobs:
           CIBOT_STORAGE_GH_ISSUE_NUMBER: 2
 
         run: |
-          echo "PR_NUMBER: $PR_NUMBER"
           uv run cibot on-pr-changed ${{ github.event.number }}  --plugin deferred_release
