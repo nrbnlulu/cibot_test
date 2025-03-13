@@ -21,7 +21,7 @@ jobs:
           CIBOT_GITHUB_REPO_SLUG: ${{ github.repository }}
           CIBOT_BACKEND: github
           CIBOT_STORAGE: github_issue
-          CIBOT_STORAGE_GH_ISSUE_NUMBER: ${{ github.event.number }}
+          CIBOT_STORAGE_GH_ISSUE_NUMBER: 2
           PR_NUMBER: ${{ github.event.number }} 
 
         run: |
