@@ -1,6 +1,9 @@
 name: Cibot
-on: [pull_request]
-
+on: 
+  pull_request:
+  push:
+    branches:
+    - main
 jobs:
   uv-example:
     name: python
@@ -17,11 +20,15 @@ jobs:
       
       - name: Run cibot
         env:
-          CIBOT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CIBOT_GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CIBOT_GITHUB_REPO_SLUG: ${{ github.repository }}
           CIBOT_BACKEND: github
           CIBOT_STORAGE: github_issue
-          CIBOT_PLUGINS: deferred_release
-          PR_NUMBER: ${{ github.event.number }} 
+          CIBOT_STORAGE_GH_ISSUE_NUMBER: 2
 
         run: |
-          uv run cibot on-pr-changed --pr=$PR_NUMBER 
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            uv run cibot on-pr-changed ${{ github.event.number }} --plugin deferred_release
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            uv run cibot on-commit-to-main --plugin deferred_release
+          fi
