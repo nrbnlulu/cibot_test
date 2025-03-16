@@ -1,5 +1,14 @@
 CHANGELOG
 =========
+0.1.68 - 2025-03-16
+--------------------
+### Release: 0.1.68
+#### Changes
+##### Bug Fix(es)
+- **Update cibot source reference in uv.lock to latest commit** - fdsafsdafasdfasdfsdaf
+ Contributed by [ניר](https://github.com/ניר) via [PR #13](https://github.com/nrbnlulu/cibot_test/pull/13/)
+
+
 0.1.67 - 2025-03-16
 --------------------
 ### Release: 0.1.67
