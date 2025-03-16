@@ -29,6 +29,7 @@ jobs:
           CIBOT_STORAGE_GH_ISSUE_NUMBER: 2
 
         run: |
+          git remote set-url origin https://${{ secrets.BOT_TOKEN }}@github.com/${{ github.repository }}
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             uv run cibot on-pr-changed ${{ github.event.number }} --plugin deferred_release --plugin semver
           elif [ "${{ github.event_name }}" == "push" ]; then
