@@ -70,5 +70,29 @@
         "change_type": "Bug Fix"
       }
     }
+  },
+  "0.5.0": {
+    "contributor": {
+      "pr_number": 18,
+      "pr_author_username": "nrbnlulu",
+      "pr_author_fullname": "\u05e0\u05d9\u05e8"
+    },
+    "header": "relase nov",
+    "description": "test release so cool",
+    "pr_number": 18,
+    "release_type": "minor",
+    "changes": {
+      "17": {
+        "contributor": {
+          "pr_number": 17,
+          "pr_author_username": "nrbnlulu",
+          "pr_author_fullname": "\u05e0\u05d9\u05e8"
+        },
+        "header": "cool feat",
+        "description": "wow cool feat",
+        "pr_number": 17,
+        "change_type": "Feature"
+      }
+    }
   }
 }

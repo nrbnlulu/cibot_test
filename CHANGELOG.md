@@ -1,5 +1,16 @@
 CHANGELOG
 =========
+0.5.0 - 2025-03-17
+--------------------
+### Release: 0.5.0
+#### relase nov
+test release so cool
+#### Changes
+##### Feature(es)
+- **cool feat** - wow cool feat
+ Contributed by [ניר](https://github.com/ניר) via [PR #17](https://github.com/nrbnlulu/cibot_test/pull/17/)
+
+
 0.4.0 - 2025-03-17
 --------------------
 ### Release: 0.4.0
