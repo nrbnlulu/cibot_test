@@ -113,7 +113,7 @@ wheels = [
 [[package]]
 name = "cibot"
 version = "0.1.0"
-source = { git = "https://github.com/nrbnlulu/cibot.git?branch=wip#44ea8ec06417e57875f83629a744123c9062c725" }
+source = { git = "https://github.com/nrbnlulu/cibot.git?branch=wip#bcd29651d9b588e2c1da084382be9825b4260dd8" }
 dependencies = [
     { name = "diff-cover" },
     { name = "httpx" },
@@ -128,7 +128,7 @@ dependencies = [
 
 [[package]]
 name = "cibot-test"
-version = "0.2.0"
+version = "0.3.0"
 source = { virtual = "." }
 dependencies = [
     { name = "cibot" },
