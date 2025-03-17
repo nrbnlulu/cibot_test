@@ -79,4 +79,4 @@ jobs:
           DIFF_COV_COMPARE_BRANCH: master
 
         run: |
-          uv run cibot --plugin diffcov
+          uv run cibot on-pr-changed ${{ github.event.number }}  --plugin diffcov
