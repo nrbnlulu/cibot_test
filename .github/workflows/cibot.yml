@@ -7,7 +7,6 @@ on:
     - master
 jobs:
   deferred_release:
-    name: python
     runs-on: ubuntu-latest
 
     steps:
