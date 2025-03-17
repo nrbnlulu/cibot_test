@@ -12,7 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.BOT_TOKEN }}
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
@@ -29,7 +31,7 @@ jobs:
 
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            uv run cibot on-pr-changed ${{ github.event.number }} --plugin deferred_release
+            uv run cibot on-pr-changed ${{ github.event.number }} --plugin deferred_release --plugin semver
           elif [ "${{ github.event_name }}" == "push" ]; then
-            uv run cibot on-commit-to-main --plugin deferred_release
+            uv run cibot on-commit-to-main --plugin deferred_release --plugin semver
           fi
