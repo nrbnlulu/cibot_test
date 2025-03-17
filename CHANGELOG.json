@@ -46,5 +46,29 @@
         "change_type": "Bug Fix"
       }
     }
+  },
+  "0.4.0": {
+    "contributor": {
+      "pr_number": 16,
+      "pr_author_username": "nrbnlulu",
+      "pr_author_fullname": "\u05e0\u05d9\u05e8"
+    },
+    "header": "release october",
+    "description": "october releaes",
+    "pr_number": 16,
+    "release_type": "minor",
+    "changes": {
+      "15": {
+        "contributor": {
+          "pr_number": 15,
+          "pr_author_username": "nrbnlulu",
+          "pr_author_fullname": "\u05e0\u05d9\u05e8"
+        },
+        "header": "wow",
+        "description": "cool big fix",
+        "pr_number": 15,
+        "change_type": "Bug Fix"
+      }
+    }
   }
 }
