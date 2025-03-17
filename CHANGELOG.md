@@ -1,5 +1,16 @@
 CHANGELOG
 =========
+0.4.0 - 2025-03-17
+--------------------
+### Release: 0.4.0
+#### release october
+october releaes
+#### Changes
+##### Bug Fix(es)
+- **wow** - cool big fix
+ Contributed by [ניר](https://github.com/ניר) via [PR #15](https://github.com/nrbnlulu/cibot_test/pull/15/)
+
+
 0.3.0 - 2025-03-17
 --------------------
 ### Release: 0.3.0
