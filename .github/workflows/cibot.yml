@@ -63,8 +63,6 @@ jobs:
 
     steps:
       # trick for diff-cover https://github.com/Bachmann1234/diff_cover/blob/main/verify.sh#L8
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
@@ -91,7 +89,7 @@ jobs:
           CIBOT_BACKEND: github
           CIBOT_STORAGE: github_issue
           CIBOT_STORAGE_GH_ISSUE_NUMBER: 2
-          DIFF_COV_COMPARE_BRANCH: master
+          DIFF_COV_COMPARE_BRANCH: origin/master
 
         run: |
           uv run cibot on-pr-changed ${{ github.event.number }}  --plugin diffcov
