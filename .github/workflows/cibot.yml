@@ -62,15 +62,17 @@ jobs:
     if: github.event_name == 'pull_request'
 
     steps:
-      # trick for diff-cover https://github.com/Bachmann1234/diff_cover/issues/55#issuecomment-976206853
+      # trick for diff-cover https://github.com/Bachmann1234/diff_cover/issues/55#issuecomment-817373173
       - name: checkout PR
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Make ${{ github.base_ref }} branch exist
         run: |
           git checkout -b ${{ github.base_ref }} --track origin/${{ github.base_ref }}
           git checkout -
-            
+
       - uses: actions/download-artifact@v4
         with:
           name: coverage-file
