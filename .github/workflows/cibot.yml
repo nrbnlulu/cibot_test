@@ -71,8 +71,6 @@ jobs:
       - name: Make ${{ github.base_ref }} branch exist
         run: |
           git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
-          git checkout -b ${{ github.base_ref }} --track origin/${{ github.base_ref }}
-          git checkout -
 
       - uses: actions/download-artifact@v4
         with:
