@@ -8,4 +8,6 @@ def this_is_not_covered():
     return woo + ops
 
 def not_covered():
-    return "This is not covered by tests"
+    baka = "not covered by tests"
+    algam = "fdsafdsafdsf"
+    return baka + algam
