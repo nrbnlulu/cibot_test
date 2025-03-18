@@ -62,11 +62,14 @@ jobs:
     if: github.event_name == 'pull_request'
 
     steps:
-      - uses: actions/checkout@v4
+      # trick for diff-cover https://github.com/Bachmann1234/diff_cover/issues/55#issuecomment-976206853
+      - name: fetch master
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-          
+          ref: master
+      - name: checkout PR
+        uses: actions/checkout@v4
+
       - uses: actions/download-artifact@v4
         with:
           name: coverage-file
