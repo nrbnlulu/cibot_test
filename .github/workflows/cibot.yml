@@ -92,4 +92,4 @@ jobs:
           DIFF_COV_COMPARE_BRANCH: origin/master
 
         run: |
-          uv run diff-cover coverage.xml --compare-branch=origin/master 
+          uv run cibot on-pr-changed ${{ github.event.number }}  --plugin diffcov
