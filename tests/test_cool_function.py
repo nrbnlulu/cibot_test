@@ -5,4 +5,5 @@ def test_cool_function():
 
 
 def test_not_covered():
-    ...
+    not_covered()  # not covered by tests
+    this_is_not_covered()
