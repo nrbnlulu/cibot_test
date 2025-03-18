@@ -1,13 +1,12 @@
 name: Cibot
-on: 
+on:
   pull_request:
   push:
     branches:
-    - main
-    - master
+      - main
+      - master
 jobs:
-  uv-example:
-    name: python
+  deferred_release:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +19,7 @@ jobs:
         with:
           version: "0.6.6"
           python-version: "3.12"
-      
+
       - name: Run cibot
         env:
           CIBOT_GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
@@ -35,3 +34,62 @@ jobs:
           elif [ "${{ github.event_name }}" == "push" ]; then
             uv run cibot on-commit-to-main --plugin deferred_release --plugin semver
           fi
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.6.6"
+          python-version: "3.12"
+      - name: Run tests
+        run: |
+          uv run pytest --cov=src --cov-report=xml
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request'
+        with:
+          name: coverage-file
+          path: coverage.xml
+
+  cov-report:
+    runs-on: ubuntu-latest
+    needs: tests
+    if: github.event_name == 'pull_request'
+
+    steps:
+      # trick for diff-cover https://github.com/Bachmann1234/diff_cover/blob/main/verify.sh#L8
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Make ${{ github.base_ref }} branch exist
+        run: |
+          git fetch origin ${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: coverage-file
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.6.6"
+          python-version: "3.12"
+
+      - name: Run cibot coverage comment
+        env:
+          CIBOT_GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CIBOT_GITHUB_REPO_SLUG: ${{ github.repository }}
+          CIBOT_BACKEND: github
+          CIBOT_STORAGE: github_issue
+          CIBOT_STORAGE_GH_ISSUE_NUMBER: 2
+          DIFF_COV_COMPARE_BRANCH: origin/master
+
+        run: |
+          uv run cibot on-pr-changed ${{ github.event.number }}  --plugin diffcov
