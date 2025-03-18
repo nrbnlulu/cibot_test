@@ -62,11 +62,13 @@ jobs:
     if: github.event_name == 'pull_request'
 
     steps:
-      # trick for diff-cover https://github.com/Bachmann1234/diff_cover/issues/55#issuecomment-817373173
-      - name: checkout PR
+      # trick for diff-cover https://github.com/Bachmann1234/diff_cover/blob/main/verify.sh#L8
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: 0
 
       - name: Make ${{ github.base_ref }} branch exist
         run: |
