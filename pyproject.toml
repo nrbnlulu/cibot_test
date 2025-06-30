@@ -8,6 +8,7 @@ dependencies = [
     "pytest>=8.3.5",
     "cibot",
     "pytest-cov>=6.0.0",
+    "baibaz",
 ]
 
 
@@ -33,3 +34,7 @@ relative_files = true
 
 [tool.uv.sources]
 cibot = { git = "https://github.com/nrbnlulu/cibot.git", branch = "master" }
+baibaz = { workspace = true }
+
+[tool.uv.workspace]
+members = ["baibaz"]
