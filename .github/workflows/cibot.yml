@@ -48,7 +48,7 @@ jobs:
           python-version: "3.12"
       - name: Run root
         run: |
-          uv run pytest --cov=src --cov-report=xml
+          uv run pytest ./tests --cov=src --cov-report=xml
       - name: Run baibaz
         run: |
           cd baibaz && uv sync && uv run pytest --cov=src --cov-report=xml
