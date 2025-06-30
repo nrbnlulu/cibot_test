@@ -32,4 +32,7 @@ relative_files = true
 
 
 [tool.uv.sources]
-cibot = { git = "https://github.com/nrbnlulu/cibot.git", branch = "codecov" }
+cibot = { git = "https://github.com/nrbnlulu/cibot.git", branch = "master" }
+
+[tool.uv.workspace]
+members = ["baibaz"]
